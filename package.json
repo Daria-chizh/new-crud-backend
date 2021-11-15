@@ -1,0 +1,28 @@
+{
+  "name": "new-crud-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "forever server.js",
+    "watch": "forever -w server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daria-chizh/new-crud-backend.git"
+  },
+  "author": "Daria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daria-chizh/new-crud-backend/issues"
+  },
+  "homepage": "https://github.com/Daria-chizh/new-crud-backend#readme",
+  "dependencies": {
+    "forever": "^4.0.1",
+    "koa": "^2.13.4",
+    "koa-body": "^4.2.0",
+    "koa-router": "^10.1.1",
+    "koa2-cors": "^2.0.6"
+  }
+}
