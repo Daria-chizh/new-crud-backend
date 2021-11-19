@@ -6,11 +6,15 @@ const koaBody = require('koa-body');
 
 const app = new Koa();
 
-app.use(cors());
-app.use(koaBody({json: true}));
+app.use(cors({ origin: '*' }));
+app.use(koaBody({ json: true }));
 
-let posts = [];
-let nextId = 1;
+let posts = [
+  { id: 1, content: 'Post 1', created: '2021-01-01T10:00:00' },
+  { id: 2, content: 'Post 2', created: '2021-03-01T10:00:00' }
+];
+
+let nextId = 3;
 
 const router = new Router();
 
@@ -38,6 +42,11 @@ router.delete('/posts/:id', async(ctx, next) => {
     posts.splice(index, 1);
   }
   ctx.response.status = 204;
+});
+
+router.get('/posts/:id', async (ctx) => {
+  const postId = Number(ctx.params.id);
+  ctx.response.body = posts.find(o => o.id === postId);
 });
 
 app.use(router.routes()).use(router.allowedMethods());
